@@ -1,0 +1,108 @@
+#+1706509837
+cd snic2020-12-21/ran/Molecules/Solutions/Ethylene_Carbonate/DFTB/
+#+1706509844
+cd restart
+#+1706509846
+ls -lhrt
+#+1706509866
+ls ../*cmd
+#+1706531272
+grep Temp eql_nh.out | perl -ane '$sum+=$F[-2]; $sumsq+=$F[-2]**2; END{ $avg=$sum/$.; $std=sqrt($sumsq/$.-$avg**2); $sem=$std/sqrt($.) ; printf ("Average: %.2f, SEM: %.2f\n",$avg,$sem)}'
+#+1706534731
+sh ../get_temperature.cmd
+#+1706534929
+cat ../get_temperature.cmd
+#+1706534991
+grep Temp eql_nh.out | tail -1000 | perl -ane '$sum+=$F[-2]; $sumsq+=$F[-2]**2; END{ $avg=$sum/$.; $std=sqrt($sumsq/$.-$avg**2); $sem=$std/sqrt($.) ; printf ("Average: %.2f, SEM: %.2f\n",$avg,$sem)}'
+#+1706535006
+grep Temp eql_nh.out | tail -500 | perl -ane '$sum+=$F[-2]; $sumsq+=$F[-2]**2; END{ $avg=$sum/$.; $std=sqrt($sumsq/$.-$avg**2); $sem=$std/sqrt($.) ; printf ("Average: %.2f, SEM: %.2f\n",$avg,$sem)}'
+#+1706541592
+less eql_nh.out
+#+1706541995
+git
+#+1706542035
+git config --global Ranger1976
+#+1706542058
+git config --global user.name Ranger1976
+#+1706542073
+it config --global user.email ran.friedman@gmail.com
+#+1706542077
+git config --global user.email ran.friedman@gmail.com
+#+1706542146
+mkdit GIT
+#+1706542151
+mkdir GIT
+#+1706542173
+mv GIT/ GIT_repositories
+#+1706542175
+cd GIT_repositories/
+#+1706542181
+git clone https://github.com/Ranger1976/Solvents
+#+1706542225
+cp ~/snic2020-12-21/ran/Molecules/Solutions/Ethylene_Carbonate/DFTB/restart/eql_nh.out eql_5-10ns.out
+#+1706542310
+mv eql_5-10ns.out etc_eql5-10ps.out
+#+1706542435
+git add .
+#+1706542477
+git push origin master
+#+1706542661
+git log
+#+1706542681
+git branch
+#+1706543313
+ls -al ~/.ssh
+#+1706543341
+less id_rsa.pub
+#+1706543385
+less ~/.ssh/id_rsa.pub
+#+1706543428
+ssh-keygen -t ed25519 -C "your_email@example.com"
+#+1706543449
+ssh-keygen -t ed25519 -C "ran.friedman@gmail.com"
+#+1706543484
+less ~/.ssh/id_ed25519.pub
+#+1706543596
+ssh -T git@github.com
+#+1706548902
+pushd ~/.ssh/
+#+1706548988
+popd
+#+1706550434
+ls
+#+1706550451
+ls Solvents/
+#+1706550469
+y
+#+1706550473
+cd ..
+#+1706550478
+rm -r Solvents/
+#+1706550491
+git clone git@github.com:Ranger1976/Solvents.git
+#+1706550496
+cd Solvents/
+#+1706550523
+cp ~/snic2020-12-21/ran/Molecules/Solutions/Ethylene_Carbonate/DFTB/restart/dftb_in.hsd dftb_in_eql_restart.hsd
+#+1706550529
+history | grep cp
+#+1706550549
+cp ~/snic2020-12-21/ran/Molecules/Solutions/Ethylene_Carbonate/DFTB/restart/geo_end.gen etc_eql10ps_geo_end.gen
+#+1706550558
+cp ~/snic2020-12-21/ran/Molecules/Solutions/Ethylene_Carbonate/DFTB/restart/geo_end.xyz etc_eql10ps_geo_end.xyz
+#+1706550583
+cp ~/snic2020-12-21/ran/Molecules/Solutions/Ethylene_Carbonate/DFTB/restart/eql_nh.out eql_5_10ps.out
+#+1706550636
+git add dftb_in_eql_restart.hsd eql_5_10ps.out etc_eql10ps_geo_end.gen etc_eql10ps_geo_end.xyz
+#+1706550638
+git commit -m "added dftb+ files"
+#+1706550650
+history | grep push
+#+1706550655
+git push origin main
+#+1706550888
+less eql_5_10ps.out
+#+1706553723
+squeue -u ran
+#+1706553726
+exit
